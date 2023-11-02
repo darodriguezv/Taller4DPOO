@@ -49,22 +49,23 @@ public class PanelTablero2d extends JPanel implements MouseListener {
 	            }
 	        }
 	    }
-	
+	 
+	 @Override
+		public void mousePressed(MouseEvent e) {
+			int click_x = e.getX();
+	        int click_y = e.getY();
+	         convertirCoordenadasACasilla(click_x, click_y);
+	        
+	        repaint();
+			
+		}
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void mousePressed(MouseEvent e) {
-		int click_x = e.getX();
-        int click_y = e.getY();
-         convertirCoordenadasACasilla(click_x, click_y);
-        
-        repaint();
-		
-	}
+	
 	
 	private void convertirCoordenadasACasilla(int x, int y)
     {

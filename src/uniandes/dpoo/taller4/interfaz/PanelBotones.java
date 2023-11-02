@@ -35,10 +35,12 @@ public class PanelBotones extends JPanel implements ActionListener {
         btnReiniciar.setActionCommand("Reiniciar");
         add(btnReiniciar);
         add(jlabel2);
+        
         JButton btnTop10= new JButton( "TOP-10" );
         btnTop10.setActionCommand("Top-10");
         add(btnTop10);
         add(jlabel3);
+        
         JButton btnCambiarJugador= new JButton( "CAMBIAR JUGADOR" );
         btnCambiarJugador.setActionCommand("Jugador");
         add(btnCambiarJugador);
@@ -54,6 +56,7 @@ public class PanelBotones extends JPanel implements ActionListener {
 		}
 	}
 
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub

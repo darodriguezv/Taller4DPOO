@@ -15,10 +15,12 @@ public class PanelJugadas extends JPanel {
 		setLayout(new GridLayout( 1, 4 ));
 		JTextField jugadas = new JTextField("Jugadas:");
 		jugadas.setEditable(false);
+		
 		add(jugadas);
 		nJugadas = new JTextField("0");
 		nJugadas.setEditable(false);
 		add(nJugadas);
+		
 		JTextField jugador = new JTextField("Jugador");
 		jugador.setEditable(false);
 		add(jugador);
@@ -38,7 +40,7 @@ public class PanelJugadas extends JPanel {
 		nombreJugador.setText(nombrePlayer);
 	}
 	
-	public String getNombreJugador() {
+	public String getNombrePlayer() {
 		return nombreJugador.getText();
 	}
 }

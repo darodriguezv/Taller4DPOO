@@ -115,6 +115,7 @@ public class Tablero
 	 * 
 	 * @return jugadas
 	 */
+	
 	public int darJugadas()
 	{
 		return jugadas;

@@ -29,11 +29,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-
-
-
-
-
 public class InterfazJuego extends JFrame implements WindowListener{
 	//Ventana principal
 	private PanelJugadas panelSur;
@@ -49,15 +44,18 @@ public class InterfazJuego extends JFrame implements WindowListener{
 	private JList<RegistroTop10> JlistTop10;
 	private JScrollPane scrollPaneTop10;
 	
-	public InterfazJuego(){
+	public InterfazJuego()
+	{
 		// Top 10
 		top10 = new Top10();
 		top10.cargarRecords( new File("./data/top10.csv"));
 		JlistTop10 = new JList<RegistroTop10>(recorrerTop10());	
 		panelTop10 =  new JPanel();
+		
 		JlistTop10.setPreferredSize(new Dimension(300,500));
 		JlistTop10.setCellRenderer(new CustomListCellRenderer());
 		scrollPaneTop10 = new JScrollPane(JlistTop10);
+		
 		JTextField nombreJugadorTop10 = new JTextField("# Jugador");
 		nombreJugadorTop10.setPreferredSize(new Dimension(100,200));
 		nombreJugadorTop10.setEditable(false);
@@ -122,6 +120,23 @@ public class InterfazJuego extends JFrame implements WindowListener{
 		panelSur.actualizarPuntaje(tablero.darJugadas());
 	}
 	
+	public void cambiarDificultad (String dificultad) {
+		if(dificultad.equals("facil")) {
+			tablero  = new Tablero(5);
+			tablero.desordenar(1);
+			
+		}
+		else if (dificultad.equals("medio")) {
+			cambiarTamanioTablero(9);
+		}
+		else {
+			cambiarTamanioTablero(11);
+		}
+		panelCentro.actualizar(tablero.darTablero());
+		panelSur.actualizarPuntaje(tablero.darJugadas()); 
+	}
+	
+	
 	public void cambiarTamanioTablero(int size) {
 		tablero = new Tablero( size );
 		
@@ -140,26 +155,11 @@ public class InterfazJuego extends JFrame implements WindowListener{
 		panelSur.actualizarNombre(nombreJugador);
 	}
 	
-	public void cambiarDificultad (String dificultad) {
-		if(dificultad.equals("facil")) {
-			tablero  = new Tablero(5);
-			tablero.desordenar(1);
-			
-		}
-		else if (dificultad.equals("medio")) {
-			cambiarTamanioTablero(9);
-		}
-		else {
-			cambiarTamanioTablero(11);
-		}
-		panelCentro.actualizar(tablero.darTablero());
-		panelSur.actualizarPuntaje(tablero.darJugadas()); 
-	}
 	
 	public void Top10() {
 		int puntaje = tablero.calcularPuntaje();
 		
-		String nombreJugador = panelSur.getNombreJugador();
+		String nombreJugador = panelSur.getNombrePlayer();
 		RegistroTop10 registroJugador = new RegistroTop10(nombreJugador, puntaje);
 		
 		if(top10.esTop10(puntaje)) {
