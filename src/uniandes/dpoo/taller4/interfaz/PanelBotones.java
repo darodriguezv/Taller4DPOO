@@ -62,7 +62,7 @@ public class PanelBotones extends JPanel implements ActionListener {
 		}else if (e.getActionCommand().equals("Reiniciar")) {
 			interfazJuego.reiniciarTablero();
 		}else if (e.getActionCommand().equals("Top-10")) {
-			interfazJuego.presionarBotonTop10();
+			interfazJuego.pressBotonTop10();
 		}else if (e.getActionCommand().equals("Jugador")) {
 			interfazJuego.cambiarNombreJugador();
 			

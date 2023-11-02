@@ -124,9 +124,12 @@ public class InterfazJuego extends JFrame implements WindowListener{
 	
 	public void cambiarTamanioTablero(int size) {
 		tablero = new Tablero( size );
+		
 		Random randomNumber = new Random() ;
 		tablero.desordenar(randomNumber.nextInt(tamanio*tamanio));
+		
 		panelCentro.actualizar(tablero.darTablero());
+		
 		tamanio = size;
 		panelSur.actualizarPuntaje(tablero.darJugadas());
 	}
@@ -138,13 +141,13 @@ public class InterfazJuego extends JFrame implements WindowListener{
 	}
 	
 	public void cambiarDificultad (String dificultad) {
-		if(dificultad.equals("ez")) {
+		if(dificultad.equals("facil")) {
 			tablero  = new Tablero(5);
 			tablero.desordenar(1);
 			
 		}
-		else if (dificultad.equals("medium")) {
-			cambiarTamanioTablero(7);
+		else if (dificultad.equals("medio")) {
+			cambiarTamanioTablero(9);
 		}
 		else {
 			cambiarTamanioTablero(11);
@@ -155,10 +158,11 @@ public class InterfazJuego extends JFrame implements WindowListener{
 	
 	public void Top10() {
 		int puntaje = tablero.calcularPuntaje();
-		String nombrePlayer = panelSur.getNombreJugador();
-		RegistroTop10 registroJugador = new RegistroTop10(nombrePlayer, puntaje);
+		
+		String nombreJugador = panelSur.getNombreJugador();
+		RegistroTop10 registroJugador = new RegistroTop10(nombreJugador, puntaje);
+		
 		if(top10.esTop10(puntaje)) {
-			System.out.println("Nose");
 			top10.agregarRegistro(registroJugador.darNombre(), puntaje);
 			jFrameTop10.remove(panelTop10);
 			panelTop10 =  new JPanel();
@@ -166,6 +170,7 @@ public class InterfazJuego extends JFrame implements WindowListener{
 			
 			scrollPaneTop10 = new JScrollPane(JlistTop10);
 			panelTop10.add(scrollPaneTop10);
+			
 			jFrameTop10.getContentPane().add(panelTop10);
 			jFrameTop10.pack();
 			
@@ -176,8 +181,15 @@ public class InterfazJuego extends JFrame implements WindowListener{
 		
 	}
 	
+	public void pressBotonTop10() {
+		 jFrameTop10.setVisible(true);
+		 
+		 jFrameTop10.setLocationRelativeTo(this);
+	}
+	
 	public DefaultListModel<RegistroTop10> recorrerTop10() {
 		DefaultListModel<RegistroTop10> registros = new DefaultListModel<>();
+		
 		for (RegistroTop10 registro : top10.darRegistros()) {
 			registros.addElement(registro);
 			
@@ -186,10 +198,7 @@ public class InterfazJuego extends JFrame implements WindowListener{
 		
 	}
 	
-	public void presionarBotonTop10() {
-		 jFrameTop10.setVisible(true);
-		 jFrameTop10.setLocationRelativeTo(this);
-	}
+	
 	
 	
 	
@@ -283,7 +292,7 @@ public class InterfazJuego extends JFrame implements WindowListener{
             } else {
                 setForeground(Color.red); // Color para las posiciones impares
             }
-            // Personaliza la apariencia de los elementos y agrega la numeración
+            // Personaliza la apariencia de los elementos y agrega la numeraciï¿½n
             setText((index + 1) + ". " + value);
 
             return this;

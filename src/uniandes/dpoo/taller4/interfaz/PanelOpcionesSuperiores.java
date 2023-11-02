@@ -23,7 +23,7 @@ public class PanelOpcionesSuperiores extends JPanel implements ActionListener {
 	public PanelOpcionesSuperiores( InterfazJuego intefazPrincipal) {
 		this.interfazPrincipal = intefazPrincipal;
 		setLayout(new GridLayout(1,6));
-		jTextFieldTamanio = new JTextField("Tamaño:");
+		jTextFieldTamanio = new JTextField("Tamaï¿½o:");
 		jTextFieldTamanio.setEditable(false);
 		add(jTextFieldTamanio);
 		jComboBox =new JComboBox(size);
@@ -58,11 +58,11 @@ public class PanelOpcionesSuperiores extends JPanel implements ActionListener {
 				interfazPrincipal.cambiarTamanioTablero(13);
 			}
 		}else if (e.getSource()==radioButtonFacil && radioButtonFacil.isSelected()) {
-			interfazPrincipal.cambiarDificultad("ez");
+			interfazPrincipal.cambiarDificultad("facil");
 		}else if (e.getSource()==radioButtonMedio && radioButtonMedio.isSelected()) {
-			interfazPrincipal.cambiarDificultad("medium");
+			interfazPrincipal.cambiarDificultad("medio");
 		}else if(e.getSource()==radioButtonDificil && radioButtonDificil.isSelected()) {
-			interfazPrincipal.cambiarDificultad("DIFFICULT");
+			interfazPrincipal.cambiarDificultad("dificil");
 		}
 		
 	}
